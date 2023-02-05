@@ -144,24 +144,20 @@
             src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
             alt="Your Company"
           />
-          <router-link
-            to="/dashboard"
-            class="pl-4 font-medium text-black dark:text-white"
-          >
+          <p class="pl-4 font-medium text-black dark:text-white">
             Project Demo
-          </router-link>
+          </p>
         </div>
         <div class="flex flex-1 flex-col overflow-y-auto dark:bg-gray-800">
           <nav class="flex-1 space-y-1 px-2 py-4">
-            <router-link
+            <a
               v-for="item in navigation"
               :key="item.name"
               :href="item.href"
-              :to="item.name"
               :class="[
                 item.current
                   ? 'bg-gray-900 text-white'
-                  : 'text-gray-400 dark:text-gray-300 hover:bg-black  hover:text-white dark:hover:bg-gray-700 dark:hover:text-white',
+                  : 'text-gray-400 dark:text-gray-300 hover:bg-black hover:text-white dark:hover:bg-gray-700 dark:hover:text-white',
                 'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
               ]"
             >
@@ -178,7 +174,7 @@
               <p class="" :class="[sidebarSmall ? 'ml-4' : 'hidden']">
                 {{ item.name }}
               </p>
-            </router-link>
+            </a>
           </nav>
         </div>
         <div class="flex px-3 py-3 justify-between">
@@ -354,8 +350,7 @@
       <main class="flex-1 h-[calc(100vh-4rem)] dark:bg-gray-800">
         <div class="py-2 mx-auto">
           <!-- Replace with your content -->
-          <!-- <DashboardView /> -->
-          <router-view />
+          <DashboardView />
           <!-- /End replace -->
         </div>
       </main>
@@ -392,11 +387,16 @@ import {
   MoonIcon,
 } from "@heroicons/vue/24/outline";
 import { MagnifyingGlassIcon } from "@heroicons/vue/20/solid";
+import TableShow from "@/components/TableShow.vue";
+import DataList from "@/components/DataList.vue";
+import ToggleButton from "@/components/ToggleButton.vue";
+import ControlList from "@/components/ControlList.vue";
+import DashboardView from "@/views/DashboardView.vue";
 
 const navigation = [
   { name: "Dashboard", href: "#", icon: HomeIcon, current: true },
-  { name: "About", href: "#", icon: UsersIcon, current: false },
-  { name: "Home", href: "#", icon: FolderIcon, current: false },
+  { name: "Team", href: "#", icon: UsersIcon, current: false },
+  { name: "Projects", href: "#", icon: FolderIcon, current: false },
   { name: "Calendar", href: "#", icon: CalendarIcon, current: false },
   { name: "Documents", href: "#", icon: InboxIcon, current: false },
   { name: "Reports", href: "#", icon: ChartBarIcon, current: false },

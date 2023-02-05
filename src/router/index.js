@@ -3,18 +3,43 @@ import HomeView from '../views/HomeView.vue'
 
 const routes = [
   {
-    path: '/',
+    path: '/Home',
     name: 'home',
     component: HomeView
   },
   {
-    path: '/about',
+    path: '/About',
     name: 'about',
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () => import(/* webpackChunkName: "about" */ '../views/AboutView.vue')
-  }
+  },
+  {
+    path: '/sidebar',
+    name: 'sidebar',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "sidebar" */ '../views/SidebarView.vue')
+  },
+  {
+    path: '/demo',
+    name: 'demo',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "demo" */ '../views/DemoView.vue')
+  },
+  {
+    path: '/dashboard',
+    name: 'dashboard',
+    // route level code-splitting
+    // this generates a separate chunk (about.[hash].js) for this route
+    // which is lazy-loaded when the route is visited.
+    component: () => import(/* webpackChunkName: "demo" */ '../views/DashboardView.vue')
+  },
+
 ]
 
 const router = createRouter({
