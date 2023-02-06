@@ -403,7 +403,7 @@ const navigation = [
   { name: "Home", href: "#", icon: FolderIcon, current: false },
 ];
 const userNavigation = [
-  { name: "Your Profile", href: "#" },
+  { name: "Your Profile", href: "#demo" },
   { name: "Settings", href: "#" },
   { name: "Sign out", href: "#" },
 ];
