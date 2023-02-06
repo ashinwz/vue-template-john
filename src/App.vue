@@ -158,24 +158,28 @@
               :key="item.name"
               :href="item.href"
               :to="item.name"
+              class="text-gray-500 dark:text-gray-500 focus:bg-gray-200 dark:focus:bg-gray-600 group-focus:text-gray-800 dark:group-focus:text-white focus:text-gray-800 hover:bg-gray-100 hover:text-gray-800 dark:hover:bg-gray-700 dark:hover:text-white group flex items-center px-2 py-2 text-sm font-medium rounded-md"
               :class="[
-                item.current
-                  ? 'bg-gray-900 text-white'
-                  : 'text-gray-400 dark:text-gray-300 hover:bg-black  hover:text-white dark:hover:bg-gray-700 dark:hover:text-white',
-                'group flex items-center px-2 py-2 text-sm font-medium rounded-md',
+                this.$route.name === item.name
+                  ? 'bg-gray-200 text-gray-800 dark:bg-gray-600 dark:text-white dark:focus:text-white '
+                  : '',
               ]"
             >
               <component
                 :is="item.icon"
-                :class="[
-                  item.current
-                    ? 'text-gray-300'
-                    : 'text-gray-400 group-hover:text-gray-300',
-                  'h-6 w-6',
-                ]"
+                class="h-6 w-6"
                 aria-hidden="true"
+                :class="[
+                  this.$route.name === item.name ? 'dark:text-white' : '',
+                ]"
               />
-              <p class="" :class="[sidebarSmall ? 'ml-4' : 'hidden']">
+              <p
+                class=""
+                :class="[
+                  sidebarSmall ? 'ml-4' : 'hidden',
+                  this.$route.name === item.name ? 'dark:text-white' : '',
+                ]"
+              >
                 {{ item.name }}
               </p>
             </router-link>
@@ -397,9 +401,6 @@ const navigation = [
   { name: "Dashboard", href: "#", icon: HomeIcon, current: true },
   { name: "About", href: "#", icon: UsersIcon, current: false },
   { name: "Home", href: "#", icon: FolderIcon, current: false },
-  { name: "Calendar", href: "#", icon: CalendarIcon, current: false },
-  { name: "Documents", href: "#", icon: InboxIcon, current: false },
-  { name: "Reports", href: "#", icon: ChartBarIcon, current: false },
 ];
 const userNavigation = [
   { name: "Your Profile", href: "#" },

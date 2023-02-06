@@ -11,7 +11,7 @@
       </p>
     </div>
     <div
-      class="mt-4 mx-4 border-t border-b border-gray-100 divide-y divide-gray-200"
+      class="mt-4 mx-4 border-t border-b border-gray-100 divide-y divide-gray-200 overflow-y-auto"
     >
       <div
         v-for="(person, personIdx) in people"
