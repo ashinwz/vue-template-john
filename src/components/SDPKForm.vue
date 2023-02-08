@@ -69,10 +69,15 @@
                     </Switch>
                 </div>
             </div>
-            <div class="mt-5 sm:grid sm:grid-cols-1">
+            <div class="mt-5 sm:grid sm:grid-cols-2">
                 <div class="place-self-center">
                     <button type="submit" class="w-32 bg-indigo-600 border border-transparent rounded-md shadow-sm py-2 px-4 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500">
                         Submit
+                    </button>
+                </div>
+                <div class="place-self-center">
+                    <button type="button" @click="resetPara" class="w-32 bg-gray-200 border border-transparent rounded-md shadow-sm py-2 px-4 text-base font-medium text-white hover:bg-gray-400 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-indigo-500">
+                        Reset
                     </button>
                 </div>
                 
@@ -143,10 +148,23 @@ export default {
             }
         }
 
+        function resetPara() {
+            form.value = {
+                SMILES: 'c1ccccc1',
+                species: 'RAT',
+                DrawEnabled: false,
+                SelectAdmin:"IV",
+                doseIV: 10,
+                dosePO: 30
+            }
+            alert("The parameters have been reset!")
+        }
+
         return {
             adminType,
             form,
-            submitForm
+            submitForm,
+            resetPara
         }
     }
 }
