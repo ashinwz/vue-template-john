@@ -141,14 +141,14 @@
           <img
             class="h-8"
             :class="[sidebarSmall ? 'w-8' : 'w-auto']"
-            src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=500"
+            src="@/assets/mark.svg"
             alt="Your Company"
           />
           <router-link
-            to="/dashboard"
-            class="pl-4 font-medium text-black dark:text-white"
+            to="/SDPK"
+            class="pl-4 font-bold text-lg text-black dark:text-white"
           >
-            Project Demo
+            Prediction Model
           </router-link>
         </div>
         <div class="flex flex-1 flex-col overflow-y-auto dark:bg-gray-800">
@@ -195,13 +195,13 @@
               <div>
                 <img
                   class="inline-block h-10 w-10 rounded-full"
-                  src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                  src="@/assets/logo.png"
                   alt=""
                 />
               </div>
               <div class="ml-3">
                 <p class="text-base font-medium text-black dark:text-gray-300">
-                  Tom Cook
+                  John Wang
                 </p>
                 <p
                   class="text-sm font-medium text-black dark:text-gray-300 group-hover:text-black: dark:group-hover:text-white"
@@ -318,7 +318,7 @@
                   <span class="sr-only">Open user menu</span>
                   <img
                     class="h-8 w-8 rounded-full"
-                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                    src="@/assets/logo.png"
                     alt=""
                   />
                 </MenuButton>
@@ -355,12 +355,10 @@
         </div>
       </div>
 
-      <main class="flex-1 h-[calc(100vh-4rem)] dark:bg-gray-800">
-        <div class="py-2 mx-auto">
+      <main class="flex-1 h-[calc(100vh-4rem)] ">
+        <div class="px-8 py-6 mx-auto">
           <!-- Replace with your content -->
-          <!-- <DashboardView /> -->
           <router-view />
-          <!-- /End replace -->
         </div>
       </main>
     </div>
@@ -398,9 +396,8 @@ import {
 import { MagnifyingGlassIcon } from "@heroicons/vue/20/solid";
 
 const navigation = [
-  { name: "Dashboard", href: "#", icon: HomeIcon, current: true },
-  { name: "About", href: "#", icon: UsersIcon, current: false },
-  { name: "Home", href: "#", icon: FolderIcon, current: false },
+  { name: "SDPK", href: "#SDPK", icon: HomeIcon, current: false },
+  { name: "About", href: "#about", icon: FolderIcon, current: false },
 ];
 const userNavigation = [
   { name: "Your Profile", href: "#demo" },
