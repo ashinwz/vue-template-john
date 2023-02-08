@@ -14,7 +14,8 @@
         </div>
         
         <div class="h-full w-4/5 rounded flex justify-center items-center content-center" :class="[isLoading?'':' hidden']">
-          <chartPlot class="h-full w-full "/>
+          <chartPlot class="h-full w-full " :chartData="plotData"/>
+          
         </div>
       </div>
     </div>
@@ -37,7 +38,14 @@ export default {
     isLoading: {
       type: Boolean,
       default: false
+    },
+    plotData:{
+      type: Object,
+      default: null
     }
+  },
+  setup() {
+    
   }
 }
 </script>

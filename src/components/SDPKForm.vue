@@ -94,7 +94,7 @@ import { Switch } from '@headlessui/vue'
 import { reactive } from 'vue'
 import { RadioGroup, RadioGroupLabel, RadioGroupOption } from '@headlessui/vue';
 import axios from 'axios';
-import { emit } from 'process';
+import { emit } from 'vue';
 
 export default {
     components: {
@@ -103,7 +103,7 @@ export default {
         RadioGroupOption,
         Switch
     },
-    setup() {
+    setup(props, {emit}) {
         const adminType = reactive(["IV","PO"])
 
         const form = ref({
@@ -119,7 +119,7 @@ export default {
 
         async function submitForm() {
             try {
-                emit('submit')
+                
                 const request_form = {
                     "StructureID": [
                         "R1"
@@ -141,8 +141,8 @@ export default {
                 }
 
                 const response = await axios.post('http://10.86.176.27:7112/api/v1/dev/sdpk/predict/', request_form);
-                console.log(response.data)
-                alert("The prediction results have been done!")
+                emit('submit', response.data.results[0])
+                
             } catch (error) {
                 console.log(error)
             }

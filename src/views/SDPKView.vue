@@ -5,7 +5,7 @@
         <SDPKForm @submit="onSubmit" />
       </div>
       <div class="w-2/3 h-[45rem] shadow">
-        <DrawPlot :is-loading="isLoading" />
+        <DrawPlot :is-loading="isLoading" :plotData="responseData"  />
       </div> 
     </div>
     <div class="mx-3 px-3 py-3 h-[50rem] shadow justify-center">
@@ -28,14 +28,18 @@ export default {
   },
   setup() {
     const isLoading = ref(false);
+    const responseData = ref(null);
 
-    const onSubmit = () =>{
+    const onSubmit = (data) =>{
       isLoading.value = true
+      console.log(data)
+      responseData.value = data
     };
 
     return {
       isLoading,
-      onSubmit
+      onSubmit,
+      responseData
     }
   }
 }
