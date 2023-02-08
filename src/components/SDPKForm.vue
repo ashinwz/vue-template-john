@@ -141,7 +141,14 @@ export default {
                 }
 
                 const response = await axios.post('http://10.86.176.27:7112/api/v1/dev/sdpk/predict/', request_form);
-                emit('submit', response.data.results[0])
+                const reponseData = {
+                    "F": response.data.results[0].F,
+                    "IV_Value": Array.from(JSON.parse(`[${response.data.results[0].pre_x}]`))[0],
+                    "AUC": response.data.results[0].IV_auc_predicted
+                }
+
+
+                emit('submit', reponseData)
                 
             } catch (error) {
                 console.log(error)
