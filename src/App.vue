@@ -355,8 +355,8 @@
         </div>
       </div>
 
-      <main class="flex-1 h-[calc(100vh-4rem)] ">
-        <div class="px-8 py-6 mx-auto">
+      <main class="flex-1 h-[calc(100vh-4rem)] dark:bg-gray-800 dark:text-white">
+        <div class="px-8 py-6 mx-auto dark:bg-gray-800 dark:text-white">
           <!-- Replace with your content -->
           <router-view />
         </div>

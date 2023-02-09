@@ -1,10 +1,10 @@
 <!-- This example requires Tailwind CSS v2.0+ -->
 <template>
-  <div class="px-4 py-4 h-full">
+  <div class="px-4 py-4 h-full dark:bg-gray-800 dark:border-gray-900 shadow">
     <div class="flex flex-col text-left">
       <div class="flex-col">
-        <h1 class="text-xl font-semibold text-gray-900">Results</h1>
-        <p class="mt-2 text-sm text-gray-700">
+        <h1 class="text-xl font-semibold text-gray-900 dark:text-white">Results</h1>
+        <p class="mt-2 text-sm text-gray-700 dark:text-white">
           A list of all the SDPK parameter results in the prediction including AUC, t-half, CL and F
         </p>
       </div>
