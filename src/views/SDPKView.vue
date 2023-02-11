@@ -1,15 +1,15 @@
 <template>
   <div class="flex flex-col space-y-5">
     <div class="px-3 py-3 flex flex-row space-x-5 max-xl:flex-col max-xl:space-x-0">
-      <div class="px-3 pt-3 w-1/3 max-xl:w-full h-[45rem] shadow overflow-y-auto overflow-x-auto">
+      <div class="px-3 pt-3 w-1/3 max-xl:w-full h-[45rem] shadow overflow-y-auto overflow-x-auto dark:bg-gray-700 rounded">
         <SDPKForm @submit="onSubmit" />
       </div>
-      <div class="w-2/3 max-xl:w-full max-xl:mt-6 h-[45rem] shadow">
+      <div class="w-2/3 max-xl:w-full max-xl:mt-6 h-[45rem] shadow dark:bg-gray-700 rounded">
         <DrawPlot :is-loading="isLoading" :plotData="responseData"  />
       </div> 
     </div>
-    <div class="mx-3 px-3 py-3 h-[50rem] shadow justify-center dark:bg-gray-800">
-      <PredictTable />
+    <div class="mx-3 px-3 py-3 h-[50rem] shadow justify-center dark:bg-gray-700 rounded ">
+      <PredictTable :isLoadingTable="isLoading" :plotDataTable="responseData" />
     </div>
   </div>
 </template>
@@ -18,7 +18,8 @@
 import SDPKForm from "@/components/SDPKForm.vue";
 import DrawPlot from "@/components/DrawPlot.vue";
 import PredictTable from "@/components/PredictTable.vue";
-import { ref } from "vue";
+import { ref, onMounted } from "vue";
+import store from "@/store";
 
 export default {
   components: {
@@ -28,11 +29,16 @@ export default {
   },
   setup() {
     const isLoading = ref(false);
-    const responseData = ref(null);
 
+    onMounted(() => {
+      if(store.state.responseData.F!=null){
+        isLoading.value = true
+      }
+    })
+
+    const responseData = ref(null);
     const onSubmit = (data) =>{
       isLoading.value = true
-      console.log(data)
       responseData.value = data
     };
 

@@ -398,6 +398,7 @@ import { MagnifyingGlassIcon } from "@heroicons/vue/20/solid";
 const navigation = [
   { name: "SDPK", href: "#SDPK", icon: HomeIcon, current: false },
   { name: "About", href: "#about", icon: FolderIcon, current: false },
+  { name: "test", href: "#test", icon: FolderIcon, current: false },
 ];
 const userNavigation = [
   { name: "Your Profile", href: "#demo" },

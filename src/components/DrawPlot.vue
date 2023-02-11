@@ -9,23 +9,14 @@
         </p>
       </div>
       <div class=" mt-6 flex justify-center items-center content-center h-[43rem] w-full">
-        <div class="h-4/5 w-4/5 bg-gray-100 rounded flex justify-center items-center content-center" :class="[isLoading?'delay-1000 hidden':'']">
-          <ChartBarSquareIcon class="h-40 w-40 text-gray-500 " :class="[isLoading?'rotate-180 tansform transition-all duration-1000 ease-in-out':'']"  aria-hidden="true" />
+        <div class="h-4/5 w-4/5 bg-gray-100 dark:bg-gray-600 rounded flex justify-center items-center content-center" :class="[isLoading?'hidden':'']">
+          <ChartBarSquareIcon class="h-40 w-40 text-gray-500 dark:text-gray-200" :class="[isLoading?'animate-spin tansform transition-all duration-1000 ease-in-out':'']"  aria-hidden="true" />
         </div>
         
-        <Suspense>
-          <template #default>
-            <div class="h-full w-full rounded flex justify-center items-center content-center dark:text-white" :class="[isLoading?'':' hidden']">
-              <chartPlot class="h-full w-full " :chartData="plotData"/>
-            </div>
-          </template>
-          
-          <template #fallback>
-            Loading...
-          </template>
-        </Suspense>
+        <div class="h-full w-full  rounded flex justify-center items-center content-center dark:text-white" :class="[isLoading?'':' hidden']">
+          <chartPlot class="h-full w-full " :chartData="plotData"/>
+        </div>
 
-        
       </div>
     </div>
   </div>
@@ -35,16 +26,13 @@
 import {
   ChartBarSquareIcon,
 } from "@heroicons/vue/24/outline";
-import { Suspense } from "vue";
 import chartPlot from './chartPlot.vue'
-
 
 export default {
   components: {
     ChartBarSquareIcon,
-    chartPlot,
-    Suspense
-},
+    chartPlot
+  },
   props: {
     isLoading: {
       type: Boolean,
@@ -54,9 +42,6 @@ export default {
       type: Object,
       default: null
     }
-  },
-  setup() {
-    
   }
 }
 </script>
