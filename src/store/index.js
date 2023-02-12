@@ -17,8 +17,8 @@ export default createStore({
   mutations: {
     updateForm(state, formData) {
       state.formData = formData
-      // console.log("store")
-      // console.log(formData)
+      console.log("store")
+      console.log(formData)
     },
     updateResponse(state, responseData) {
       state.responseData = responseData

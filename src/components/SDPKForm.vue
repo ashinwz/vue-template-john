@@ -133,16 +133,6 @@ export default {
 
         const predictionResults = ref([])
         let reponseData;
-        let lengthResults
-
-        // onMounted(() => {
-        //     window.addEventListener('beforeunload', (e) => {
-        //         if(form.SMILES !='' || form.species !=''){
-        //             e.preventDefault();
-        //             e.returnValue = ''
-        //         }
-        //     })
-        // })
 
         async function submitForm() {
             try {
@@ -183,7 +173,7 @@ export default {
                         "AUC_IV": response.data.results[speciesID].IV_auc_predicted,
                         "AUC_PO": response.data.results[speciesID].PO_auc_predicted,
                         "CL": response.data.results[speciesID].IV_cl_predicted,
-                        "Structure": response.data.stru_image[0],
+                        "Structure": "T",
                         "SMILES": response.data.results[speciesID].Smiles,
                         "Species": response.data.results[speciesID].Species
                     }
@@ -195,14 +185,15 @@ export default {
                         "AUC_IV": response.data.results[speciesID].IV_auc_predicted,
                         "AUC_PO": response.data.results[speciesID].PO_auc_predicted,
                         "CL": response.data.results[speciesID].IV_cl_predicted,
-                        "Structure": null
+                        "Structure": null,
+                        "SMILES": null,
+                        "Species": response.data.results[speciesID].Species
                     }
                 } 
                 
                 store.commit('updateForm', form)
                 store.commit('updateResponse', reponseData)
 
-            
                 emit('submit', reponseData)
                 
             } catch (error) {
@@ -245,8 +236,4 @@ export default {
     
     }
 }
-
-
-
-
 </script>

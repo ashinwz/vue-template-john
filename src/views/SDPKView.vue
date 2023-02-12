@@ -31,7 +31,7 @@ export default {
     const isLoading = ref(false);
 
     onMounted(() => {
-      if(store.state.responseData.F!=null){
+      if(store.state.responseData.Structure!=null){
         isLoading.value = true
       }
     })

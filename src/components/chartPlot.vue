@@ -46,7 +46,12 @@
                     </template>
                 </suspense>
                 <!-- <canvas id="PlotChart" class="h-25"></canvas> -->
-                <div v-if="loadingState" v-html="structure" class="w-50 h-50 absolute top-10 right-40 border-solid border-2 border-gray-600 max-md:w-20 max-md:h-20"></div>
+                <!-- <div v-if="loadingState" v-html="structure" class="w-50 h-50 absolute top-10 right-40 border-solid border-2 border-gray-600 max-md:w-20 max-md:h-20"></div> -->
+                <div :class="loadingState?'':'hidden'" class="w-50 h-50 absolute top-10 right-40 border-solid border-2 max-md:w-20 max-md:h-20">
+                    <div class="bg-gray-900 w-[15rem] h-[15rem]">
+                        <svg id="svgExample"/>
+                    </div>
+                </div>
             </div>
         </div>
                 
@@ -78,18 +83,35 @@ setup(props) {
     let chart;
     const structure = ref(null);
     const loadingState = ref(false);
+    const SMILES = ref("")
+
+    function getImage(smi) {
+        if(smi!=null){
+            let moleculeOptions = {width: 100, height: 100};
+            let sd = new SmiDrawer(moleculeOptions);
+            sd.drawMolecule(smi, '#svgExample', 'dark')
+        } else {
+            loadingState.value=true
+        }
+    }
 
     onMounted(() => {
+
         console.log(store.state.responseData)
+        console.log(store.state.formData)
+        if(store.state.responseData.structure!=null) {
+            loadingState.value=true
+        }
         showData.value = parseFloat(store.state.responseData.F).toFixed(4)
         IVAUC.value = parseFloat(store.state.responseData.AUC_IV).toFixed(4)
         POAUC.value = parseFloat(store.state.responseData.AUC_PO).toFixed(4)
         IVCL.value = parseFloat(store.state.responseData.CL).toFixed(4)
         IVValue = store.state.responseData.IV_Value
         POValue = store.state.responseData.PO_Value
-        // structure.value = Buffer.from(store.state.responseData.Structure, 'base64')
-
-
+        SMILES.value = store.state.responseData.SMILES
+        console.log(SMILES.value)
+        getImage(SMILES.value)
+    
         chart = new Chart(document.getElementById('PlotChart'), {
             type: 'line',
             data: {
@@ -135,12 +157,12 @@ setup(props) {
         });
                 
         if(showData.value!=null) {
-            loadingState.value = false
+            loadingState.value = true
         }
     }) 
 
-
     watch(() => props.chartData, async (data)=>{
+        console.log("watch now..")
         if(chart) {
             chart.destroy(); 
         }
@@ -150,7 +172,9 @@ setup(props) {
         POAUC.value = parseFloat(data.AUC_PO).toFixed(4)
         IVCL.value = parseFloat(data.CL).toFixed(4)
         // structure.value = atob(data.Structure)
-        structure.value = Buffer.from(data.Structure, 'base64')
+        // structure.value = Buffer.from(data.Structure, 'base64')
+        SMILES.value = data.SMILES
+        getImage(data.SMILES)
 
         IVValue = data.IV_Value
         POValue = data.PO_Value
@@ -199,7 +223,7 @@ setup(props) {
             },
         });
 
-        if(data.Structure!=null) {
+        if(data.SMILES!=null) {
             loadingState.value = true
         } else {
             loadingState.value = false
@@ -214,9 +238,10 @@ setup(props) {
         IVTime,
         IVCL,
         structure,
-        loadingState
+        loadingState,
+        SMILES
     };
-},
+}
 };
 </script>
 
