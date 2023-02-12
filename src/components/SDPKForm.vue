@@ -133,6 +133,7 @@ export default {
 
         const predictionResults = ref([])
         let reponseData;
+        let lengthResults
 
         // onMounted(() => {
         //     window.addEventListener('beforeunload', (e) => {
@@ -174,10 +175,6 @@ export default {
                     speciesID = 1;
                 }
                 
-                let lengthResults = response.data.results.length
-                console.log(lengthResults)
-
-
                 if (form.DrawEnabled) {
                     reponseData= {
                         "F": response.data.results[speciesID].F,
